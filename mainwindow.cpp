@@ -1,9 +1,8 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QHBoxLayout>
 #include <CBlok.h>
-#include <QWidget>
+//#include <QWidget>
 #include <iostream>
 #include "CLinia.h"
 #include <string>
@@ -35,34 +34,37 @@ void MainWindow::jedenKrokSymulacji()
             //std::cout<<"2symulacja"<<std::endl;
             war=czlony.at(i)->getWartoscCzlonu();
             //std::cout<<"3symulacja"<<std::endl;
-            std::cout<<"WPISUJE: "<<war<<std::endl;
+            //std::cout<<"WPISUJE: "<<war<<std::endl;
 
             bloki.at(i)->setWartoscDisp(war);
             bloki.at(i)->update();
-            std::cout<<"WPISUJE2: "<<war<<std::endl;
+            //std::cout<<"WPISUJE2: "<<war<<std::endl;
         }
+
 }
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ileBlokow=0;
+
     ui->setupUi(this);
 
+    ileBlokow=0;
     scene=new QGraphicsScene();
 
     scene->setSceneRect(ui->pole->rect());
 
     view = new QGraphicsView(scene,ui->pole);
-    view->setAcceptDrops(true);
     view->setRenderHints(QPainter::Antialiasing);
-
     view->show();
+
 }
 
 MainWindow::~MainWindow()
 {
+    delete scene;
+    delete view;
     delete ui;
 }
 
@@ -153,9 +155,12 @@ void MainWindow::on_dodajCzlon_clicked()
     else if(ui->typCzlonu->currentText()=="Mux"){
         std::string napis=ui->typCzlonu->currentText().toStdString();
         CMux *blok=new CMux(ileWejsc);
+        //std::cout<<"MUX1"<<std::endl;
         blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
+        //std::cout<<"MUX2"<<std::endl;
         treeItem->setText(1,QString::fromStdString(napis));
         kolejny=new CBlok(posX,posY,ileWejsc,1);
+        //std::cout<<"MUX3"<<std::endl;
         kolejny->setTitle(napis);
         kolejny->setWartoscDisp(wartosc);
         kolejny->setID(ileBlokow);
@@ -223,10 +228,12 @@ void MainWindow::on_dodajCzlon_clicked()
     scene->addItem(kolejny);
     kolejny->show();
     ui->listaCzlonow->addTopLevelItem(treeItem);
+
 }
 
 void MainWindow::on_dodajPolaczenie_clicked()
 {
+
     int idOut,idIn;
     idOut=ui->idWyjscia->text().toInt();
     idIn=ui->idWejscia->text().toInt();
@@ -266,6 +273,7 @@ void MainWindow::on_dodajPolaczenie_clicked()
     scene->addItem(line);
     std::cout<<"ETAP4"<<std::endl;
     //delete czlon,czlonP;
+
 }
 
 void MainWindow::on_wykonajKrok_clicked()

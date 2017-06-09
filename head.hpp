@@ -2,7 +2,7 @@
 #define HEAD_HPP
 
 #include <string>
-//#include <sstream>
+#include <sstream>
 #include <vector>
 //#include <list>
 #include <iostream>

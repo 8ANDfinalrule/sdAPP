@@ -10,8 +10,6 @@ protected:
 public:
     CVector(){
         this->rozmiarVector=2;
-
-        wartoscVector.clear();
         wartoscVector.resize(rozmiarVector,0.0);
     }
     int getRozmiarWektora();

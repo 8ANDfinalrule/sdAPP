@@ -7,7 +7,9 @@
 class CMux : public CWiele{
 public:
     CMux(int ileIn=2): CWiele(ileIn){
+
         this->setTypWyjscia("vector");
+        std::cout<<"Cczyli dziuala"<<std::endl;
     };
     void wykonajKrokSymulacji();
 };

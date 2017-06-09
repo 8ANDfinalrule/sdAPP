@@ -42,12 +42,17 @@
 
     bool CCzlonCzynny::sprawdzZgodnoscTypowPolaczenia(CCzlon *poczatek, CCzlon *koniec){
         CCzlonCzynny *c=dynamic_cast<CCzlonCzynny*>(koniec);
-        //std::cout<<"****TYP WEJSCIA"<<poczatek->getTypWyjscia()<<std::endl;
-        //std::cout<<"****TYP WyJSCIA"<<c->getTypPolaczenia()<<std::endl;
+
         if(poczatek->getTypWyjscia()==c->getTypPolaczenia()){
             return true;
         }
         else{
+            if(koniec->getTypWyjscia()=="double"){
+                CReversedMux *czlon1=dynamic_cast<CReversedMux*>(poczatek);
+                if(czlon1!=NULL){
+                    return true;
+                }
+            }
             return false;
         }
     }
@@ -72,12 +77,13 @@
         }
         else if(typWyjscia=="vector"){
             delete this->wartosc;
+            std::cout<<"KONWERSJAVECTOR"<<std::endl;
             this->wartosc= new CVector;
-            //std::cout<<"KONWERSJAVECTOR"<<std::endl;
+            std::cout<<"KONWERSJAVECTOR2"<<std::endl;
             CVector *v=dynamic_cast<CVector*>(this->wartosc);
             if(v!=NULL){
 
-                //std::cout<<"KONWERSJAVECTORZEPSUTA:"<<this->wartosc->getWartosc()<<std::endl;
+                std::cout<<"KONWERSJAVECTORDZIALA:"<<this->wartosc->getWartosc()<<std::endl;
             }
         }
     }

@@ -29,8 +29,9 @@
             s.clear();
             s.append(std::to_string(wyjscia.at(i)));
             std::cout<<"WYJSCIE POJEDYNCZE DO rMUX"<<s<<std::endl;
-            wyjsciaPojedyncze[i]->setTypWyjscia("double");
+
             wyjsciaPojedyncze[i]=new CStala(s);
+            wyjsciaPojedyncze[i]->setTypWyjscia("double");
             std::cout<<"WYJSCIE POJEDYNCZE DO rMUXB STALA"<<wyjsciaPojedyncze[i]->getWartoscCzlonu()<<std::endl;
         }
         std::cout<<"WYJSCIE Z WEKTORA"<<zapisz<<std::endl;
@@ -41,8 +42,9 @@
 
         if(ktory<liczbaWyjsc){
 
-            CCzlonCzynny *zwracany=new CCzlonCzynny;
+            CCzlonCzynny *zwracany=new CStala;
             zwracany=wyjsciaPojedyncze[ktory];
+            zwracany->setTypWyjscia("double");
             std::cout<<"zwracam "<<ktory<<" wskaznik"<<std::endl;
             return zwracany;
         }

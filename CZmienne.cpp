@@ -24,15 +24,20 @@ void CVector::setWartosc(std::string wartosc)
         std::cout<<"ZLY TYP DANYCH; NIE WEKTOR"<<std::endl;
     }
     else{
+        //std::cout<<"ROZPOCZYNANIE SETOWANIE"<<std::endl;
         int i=0;
         do{
             found=wartosc.find_first_of(';');
+            std::cout<<"ROZPOCZYNANIE SETOWANIE found:"<<found<<std::endl;
             std::string s;
-            s.append(0,found-1);
+
+            s=wartosc.substr(0,found-1);
+            std::cout<<"ROZPOCZYNANIE SETOWANIE sdone:"<<s<<std::endl;
             wartosc.erase(0,found+1);
             if(s.empty()){
                 return;
             }
+            std::cout<<"ROZPOCZYNANIE SETOWANIEstod"<<std::endl;
             this->wartoscVector.at(i)=std::stod(s);
             i++;
         }while(found!=std::string::npos);
@@ -43,6 +48,7 @@ std::vector<double> CVector::wczytajStringDoWektor(std::string str)
 {
     std::size_t found=str.find_first_of(';');
     std::vector<double> vec;
+    std::cout<<"WCZYTAJ STRING DO vecTOR found"<<found<<std::endl;
     if(found==std::string::npos){
         if(str.empty()){
             vec.push_back(0.0);
@@ -53,16 +59,19 @@ std::vector<double> CVector::wczytajStringDoWektor(std::string str)
         }
     }
     else{
+        std::cout<<"WCZYTAJ STRINGdoV2"<<found<<std::endl;
         do{
         found=str.find_first_of(';');
+        std::cout<<"WCZYTAJ STRINGdoV2"<<found<<std::endl;
         std::string s;
-        s.append(0,found-1);
+        s=str.substr(0,found-1);
         str.erase(0,found+1);
+        std::cout<<"WCZYTAJ STRINGdoV3 :s: "<<s<<std::endl;
         if(s.empty()){
             return vec;
         }
         vec.push_back(std::stod(s));
-        }while(found==std::string::npos);
+        }while(found!=std::string::npos);
 
     }
     return vec;
@@ -71,10 +80,16 @@ std::vector<double> CVector::wczytajStringDoWektor(std::string str)
 std::string CVector::wczytajWektorDoString(std::vector<double> vec)
 {
     std::string string;
+    std::cout<<"WCZYTAJWEKTORDOSTRINGVECTOR"<<std::endl;
     for(int i=0;i<vec.size();i++){
+        std::cout<<"cos do wczytania: "<<i<<" = "<<vec.at(i)<<'.'<<std::endl;
         string.append(std::to_string(vec.at(i)));
         string.append(";");
     }
+    if(string.empty()){
+        string.append("0");
+    }
+    std::cout<<"WCZYTAJWEKTOr: string: "<<string<<std::endl;
     return string;
 }
 
@@ -86,7 +101,8 @@ int CVector::getRozmiarWektora(){
 std::string CDouble::getWartosc()
 {
     std::ostringstream sstream;
-    sstream << this->wartoscDouble;
+    sstream << std::to_string(this->wartoscDouble);
+    std::cout<<"MAMWARTOSC"<<sstream.str()<<std::endl;
     return sstream.str();
 }
 
@@ -115,7 +131,7 @@ std::vector<double> CDouble::wczytajStringDoWektor(std::string str)
         }
     }
     std::string s;
-    s.append(0,found-1);
+    s=str.substr(0,found-1);
     if(s.empty()){
         return vec;
     }
@@ -153,6 +169,7 @@ std::vector<double> CInt::wczytajStringDoWektor(std::string str)
 {
     std::size_t found=str.find_first_of(';');
     std::vector<double> vec;
+    std::cout<<"WCZYTAJ STRING DO vecTOR found"<<found<<std::endl;
     if(found==std::string::npos){
         if(str.empty()){
             vec.push_back(0.0);
@@ -163,7 +180,7 @@ std::vector<double> CInt::wczytajStringDoWektor(std::string str)
         }
     }
     std::string s;
-    s.append(0,found-1);
+    s=str.substr(0,found-1);
     if(s.empty()){
         return vec;
     }
@@ -215,7 +232,7 @@ std::vector<double> CBool::wczytajStringDoWektor(std::string str)
         }
     }
     std::string s;
-    s.append(0,found-1);
+    s=str.substr(0,found-1);
     if(s.empty()){
         return vec;
     }
