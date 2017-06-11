@@ -137,10 +137,11 @@ std::vector<double> CDouble::wczytajStringDoWektor(std::string str)
         }
     }
     std::string s;
-    s=str.substr(0,found-1);
+    s=str.substr(0,found);
     if(s.empty()){
         return vec;
     }
+    std::cout<<"DO WEKTORA cdoublE: "<<s<<std::endl;
     vec.push_back(std::stod(s));
     return vec;
 }

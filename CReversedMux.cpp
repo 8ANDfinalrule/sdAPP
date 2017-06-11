@@ -2,12 +2,7 @@
 #include "CReversedMux.h"
 
 
-    void CReversedMux::setLiczbaWyjsc(int liczba){
-        liczbaWyjsc=liczba;
-    };
-    int CReversedMux::getLiczbaWyjsc(){
-        return liczbaWyjsc;
-    };
+
     void CReversedMux::wykonajKrokSymulacji(){
 
         this->setTypWyjscia("vector");
@@ -39,17 +34,4 @@
         this->wartosc->setWartosc(zapisz);
 
     }
-    CCzlon *CReversedMux::getWskaznikWyjscia(int ktory){
 
-        if(ktory<liczbaWyjsc){
-
-            CCzlonCzynny *zwracany=new CStala;
-            zwracany=wyjsciaPojedyncze[ktory];
-            zwracany->setTypWyjscia("double");
-            std::cout<<"zwracam "<<ktory<<" wskaznik"<<std::endl;
-            return zwracany;
-        }
-        else{
-            std::cout<<"POWAZNY BLAD"<<std::endl;
-        }
-    }

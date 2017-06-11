@@ -4,9 +4,9 @@
 #include "head.hpp"
 #include "CWiele.h"
 
-class CMux : public CWiele{
+class CMux : public CWieleWejsc{
 public:
-    CMux(int ileIn=2): CWiele(ileIn){
+    CMux(int ileIn=2): CWieleWejsc(ileIn){
         this->setTypWyjscia("vector");
         std::cout<<"Cczyli dziuala"<<std::endl;
     };

@@ -1,9 +1,9 @@
 #include "CWiele.h"
 #include "head.hpp"
 
-    CWiele::CWiele(int ilosc){
+    CWieleWejsc::CWieleWejsc(int ilosc){
         std::cout<<"pro"<<std::endl;
-        maxIloscWejsc=ilosc;
+        this->maxIloscWejsc=ilosc;
         std::cout<<"KONSTRUKTOR cWIELE"<<std::endl;
         wektorTypowWejsc=new std::string[maxIloscWejsc];
         wektorWejsc=new CPolaczenie[maxIloscWejsc];
@@ -18,7 +18,7 @@
 
     };
 
-    void CWiele::setIloscWejscCzlonu(int ilosc){
+    void CWieleWejsc::setIloscWejscCzlonu(int ilosc){
         maxIloscWejsc=ilosc;
         wektorTypowWejsc=new std::string[maxIloscWejsc];
         wektorWejsc=new CPolaczenie[maxIloscWejsc];
@@ -27,7 +27,7 @@
             wektorFlagWejsc[i]=0;
         }
     };
-    int CWiele::getIloscWejscCzlonu(){
+    int CWieleWejsc::getIloscWejscCzlonu(){
         return maxIloscWejsc;
     };
 
@@ -50,15 +50,11 @@
             }
         }
     };*/
-    void CWiele::usunPolaczenie(int numerPolaczenia){
+    void CWieleWejsc::usunPolaczenie(int numerPolaczenia){
         wektorFlagWejsc[numerPolaczenia-1]=0;
     };
 
-    std::string CWiele::getTypPolaczenia(int numerPolaczenia){
+    std::string CWieleWejsc::getTypPolaczenia(int numerPolaczenia){
         return wektorTypowWejsc[numerPolaczenia];
     }
 
-    int CWiele::getLiczbaWyjsc()
-    {
-        return this->liczbaWyjsc;
-    }

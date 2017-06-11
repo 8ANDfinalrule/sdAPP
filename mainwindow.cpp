@@ -184,13 +184,13 @@ void MainWindow::on_dodajPolaczenie_clicked()
         return;
     }
     CLinia *line=new CLinia(pocz->getPunktWyjscia(nrWy),kon->getPunktWejscia(nrWe));
-    std::cout<<"ETAP2"<<std::endl;
+    //std::cout<<"ETAP2"<<std::endl;
     czlony.at(idIn-1)->dodajPolaczenie(czlony.at(idOut-1),czlony.at(idIn-1),nrWe,nrWy);
-    std::cout<<"ETAP3"<<std::endl;
+    //std::cout<<"ETAP3"<<std::endl;
     pocz->dodajLinia(&*line,true,nrWy);
     kon->dodajLinia(&*line,false,nrWe);
     scene->addItem(line);
-    std::cout<<"ETAP4"<<std::endl;
+    //std::cout<<"ETAP4"<<std::endl;
     //delete czlon,czlonP;
 
 }

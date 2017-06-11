@@ -15,7 +15,12 @@
         std::vector<double> wejscie;
         std::vector<double> wynik;
         std::string w;
+        if(this->wektorFlagWejsc[0]==1){
         w=this->wektorWejsc[0].getSygnal();
+        }else{
+            w=std::to_string(0);
+        }
+        std::cout<<"WEKTOR WCXZYTANY DO WEZLA"<<std::endl;
         wejscie=this->wartosc->wczytajStringDoWektor(w);
         int rozmiarWektoraWejscia=wejscie.size();
         wynik.resize(rozmiarWektoraWejscia);

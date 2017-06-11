@@ -7,6 +7,7 @@ class CCzlon: public ICCzlon{
 protected:
     std::string typWyjscia;
     ICWartosc *wartosc;
+    int liczbaWyjsc;
 public:
     CCzlon(std::string typ="double");
     std::string getTypWyjscia();

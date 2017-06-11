@@ -36,25 +36,6 @@ void CStock::wykonajKrokSymulacji(){
         std::cout<<this->wartosc->getWartosc()<<"towartosc***"<<std::endl;
 }
 
-void CStock::setLiczbaWyjsc(int liczba){
-    this->liczbaWyjsc=liczba;
-};
-int CStock::getLiczbaWyjsc(){
-    return this->liczbaWyjsc;
-}
-
-CCzlon *CStock::getWskaznikWyjscia(int ktory){
-
-    if(ktory<liczbaWyjsc){
-        CCzlonCzynny *zwracany=new CCzlonCzynny;
-        zwracany=this->wyjsciaPojedyncze[ktory];
-
-        return zwracany;
-    }
-    else{
-        std::cout<<std::endl<<"POWAZNY BLAD"<<std::endl<<std::endl;
-    }
-}
 
 void CStock::setIleNaWyjscie(double ile){
     this->ileNaWyjscie=ile;

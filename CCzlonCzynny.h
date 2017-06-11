@@ -9,7 +9,7 @@
 class CCzlonCzynny : public CCzlon{
 protected:
     static int indeksCzlonu;
-    int liczbaWyjsc;
+
     int maxIloscWejsc=1;
     CPolaczenie *wektorWejsc;
     std::string *wektorTypowWejsc;
