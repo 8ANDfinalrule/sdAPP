@@ -127,13 +127,13 @@
         //std::cout<<"BEZPOSREDNIO WARTOSC"<<std::endl;
         std::string s;
         //std::cout<<"BEZPOSREDNIO WARTOSCgggg"<<std::endl;
-       // CVector *v=dynamic_cast<CVector*>(this->wartosc);
-        //if(v==NULL){std::cout<<"SLABO"<<std::endl;s="0.0";}
-        //else{
-        //    //std::cout<<"BEZPOSREDNIO WARTOSC2.3:"<<std::endl;
+        CStala *v=dynamic_cast<CStala*>(this->wartosc);
+        if(v==NULL){std::cout<<"CSTALA SLABO"<<std::endl;s="0.0";}
+        else{
+           std::cout<<"BEZPOSREDNIO WARTOSC2.3:"<<std::endl;
         s=this->wartosc->getWartosc();
         //std::cout<<"BEZPOSREDNIO WARTOSC2:"<<s<<std::endl;
-        //}
+        }
         return this->wartosc->getWartosc();
 
     }

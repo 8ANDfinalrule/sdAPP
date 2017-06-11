@@ -50,7 +50,7 @@ public:
     void wypiszSygnalZWejscia();
     int getLiczbaWejsc();
     virtual int getLiczbaWyjsc();
-    void setTypWyjscia(std::string typ);
+    virtual void setTypWyjscia(std::string typ);
     virtual void wykonajKrokSymulacji(){};
     std::string getWartoscCzlonu();
     std::string getStringFromWektorCzlon(std::vector <double> w);

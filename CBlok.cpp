@@ -56,6 +56,7 @@ CBlok::CBlok(double startX,double startY,int ileIn, int ileOut)
     disp=new QGraphicsTextItem(this);
     font->setPixelSize(10);
     disp->setFont(*font);
+    disp->setTextWidth(20);
     disp->setPlainText(QString("wynik"));
     disp->setPos(mapToScene(startX+sizeX/3,startY+sizeY/3));
 

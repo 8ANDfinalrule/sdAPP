@@ -19,7 +19,7 @@
         wejscie=this->wartosc->wczytajStringDoWektor(w);
         int rozmiarWektoraWejscia=wejscie.size();
         wynik.resize(rozmiarWektoraWejscia);
-
+        std::cout<<"SUMOWANIE1"<<std::endl;
         if(wektorDzialan.at(0)=='+'||wektorDzialan.at(0)=='-'){
             for(int i=0;i<rozmiarWektoraWejscia;i++){
                 wynik.at(i)=0;
@@ -30,15 +30,16 @@
                 wynik.at(i)=1;
             }
         }
-
-        for(int i=0;i<this->maxIloscWejsc;i++){
-            if(this->wektorFlagWejsc[i]==0){
+        std::cout<<"SUMOWANIE2,rozmiar: "<<wynik.size()<<std::endl;
+        for(int j=0;j<this->maxIloscWejsc;j++){
+            if(this->wektorFlagWejsc[j]==0){
                 continue;
             }
-            w=this->wektorWejsc[i].getSygnal();
+            w=this->wektorWejsc[j].getSygnal();
             wejscie=this->wartosc->wczytajStringDoWektor(w);
             wejscie.resize(rozmiarWektoraWejscia,0.0);
-            switch (wektorDzialan.at(i)){
+            std::cout<<"SUMOWANIE3 "<<wynik.size()<<std::endl;
+            switch (wektorDzialan.at(j)){
             case '+':
                 for(int i=0;i<rozmiarWektoraWejscia;i++){
                 wynik.at(i)+=wejscie.at(i);

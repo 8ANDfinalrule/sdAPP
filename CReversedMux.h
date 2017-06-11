@@ -11,7 +11,7 @@ private:
     std::vector <double> wyjscia;
 public:
     CReversedMux(int IleOut=2): CCzlonCzynny(){
-        this->liczbaWyjsc=2;
+        this->liczbaWyjsc=IleOut;
 
         std::cout<<"REVERSED MUX"<<std::endl;
         for(int i=0;i<this->maxIloscWejsc;i++){
@@ -29,6 +29,7 @@ public:
     void setLiczbaWyjsc(int liczba);
     int getLiczbaWyjsc();
     void wykonajKrokSymulacji();
+    void setTypWyjscia(std::string typ){};
     CCzlon *getWskaznikWyjscia(int ktory);
 };
 

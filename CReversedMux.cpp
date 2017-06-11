@@ -18,7 +18,8 @@
         s=this->wektorWejsc[0].getSygnal();
         std::cout<<s<<"  - SYGNAL PRZYSZEDL Z WEJSCIA"<<std::endl;
         wyjscia=this->wartosc->wczytajStringDoWektor(s);
-        wyjscia.resize(liczbaWyjsc,0);
+        wyjscia.resize(this->liczbaWyjsc,0);
+        std::cout<<"LICZBA WYJSC R MUX = "<<this->liczbaWyjsc<<std::endl;
         for(int i=0;i<wyjscia.size();i++){
             std::cout<<wyjscia.at(i)<<"  to jest to ."<<std::endl;
         }
@@ -29,9 +30,9 @@
             s.clear();
             s.append(std::to_string(wyjscia.at(i)));
             std::cout<<"WYJSCIE POJEDYNCZE DO rMUX"<<s<<std::endl;
-
-            wyjsciaPojedyncze[i]=new CStala(s);
             wyjsciaPojedyncze[i]->setTypWyjscia("double");
+            wyjsciaPojedyncze[i]->setStala(s);
+
             std::cout<<"WYJSCIE POJEDYNCZE DO rMUXB STALA"<<wyjsciaPojedyncze[i]->getWartoscCzlonu()<<std::endl;
         }
         std::cout<<"WYJSCIE Z WEKTORA"<<zapisz<<std::endl;

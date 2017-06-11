@@ -79,151 +79,70 @@ void MainWindow::on_dodajCzlon_clicked()
     QTreeWidgetItem *treeItem=new QTreeWidgetItem;
     ileBlokow++;
     QString nap=QString::number(ileBlokow);
-   // std::cout<<"nap"<<nap.toStdString()<<std::endl;
     treeItem->setText(0,nap);
     ui->LiczbaCzlonow->display(ileBlokow);
-    std::vector<double> wartosc;
-    wartosc.push_back(ui->wartosc->value());
-    //std::cout<<"VALUE PUSHED"<<wartosc.at(0)<<std::endl;
+    std::string wartosc;
+    wartosc=ui->wartosc->text().toStdString();
+
     CBlok *kolejny;
+    CCzlonCzynny *blok;
+    std::string napis=ui->typCzlonu->currentText().toStdString();
     if(ui->typCzlonu->currentText()=="Człon Różniczkujący"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CCzlonRozniczkujacy *blok=new CCzlonRozniczkujacy();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CCzlonRozniczkujacy();
         kolejny=new CBlok(posX,posY,1,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Człon Proporcjonalny"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CCzlonProporcjonalny *blok=new CCzlonProporcjonalny();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CCzlonProporcjonalny();
         kolejny=new CBlok(posX,posY,1,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Człon Całkujący"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CCzlonCalkujacy *blok=new CCzlonCalkujacy();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CCzlonCalkujacy();
         kolejny=new CBlok(posX,posY,1,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Człon Inercyjny"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CCzlonInercyjny *blok=new CCzlonInercyjny();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CCzlonInercyjny();
         kolejny=new CBlok(posX,posY,1,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Człon Opóźniający"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CCzlonOpozniajacy *blok=new CCzlonOpozniajacy();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CCzlonOpozniajacy();
         kolejny=new CBlok(posX,posY,1,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Konwerter"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CKonwerter *blok=new CKonwerter();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CKonwerter();
         kolejny=new CBlok(posX,posY,1,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Mux"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CMux *blok=new CMux(ileWejsc);
-        //std::cout<<"MUX1"<<std::endl;
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        //std::cout<<"MUX2"<<std::endl;
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CMux(ileWejsc);
+        std::cout<<"ILE WEJSCCZLON MUX"<<blok->getLiczbaWejsc()<<std::endl;
         kolejny=new CBlok(posX,posY,ileWejsc,1);
-        //std::cout<<"MUX3"<<std::endl;
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Reversed Mux"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CReversedMux *blok=new CReversedMux(ileWyjsc);
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CReversedMux(ileWyjsc);
         kolejny=new CBlok(posX,posY,1,ileWyjsc);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Węzeł"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CWezel *blok=new CWezel(ileWejsc,'+');
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CWezel(ileWejsc,'+');
         kolejny=new CBlok(posX,posY,ileWejsc,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Stock"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        //std::cout<<"ETAP2.1"<<std::endl;
-        CStock *blok=new CStock();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        //std::cout<<"ETAP2.2"<<std::endl;
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CStock(ileWejsc,ileWyjsc,wartosc);
         kolejny=new CBlok(posX,posY,ileWejsc,ileWyjsc);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        //std::cout<<"ETA2.3"<<std::endl;
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Stała"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CStala *blok=new CStala();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CStala(wartosc);
         kolejny=new CBlok(posX,posY,0,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
     }
     else if(ui->typCzlonu->currentText()=="Źródło Sinusoidalne"){
-        std::string napis=ui->typCzlonu->currentText().toStdString();
-        CZrodloSinusoidalne *blok=new CZrodloSinusoidalne();
-        blok->setWartoscCzlon(blok,blok->getStringFromWektorCzlon(wartosc));
-        treeItem->setText(1,QString::fromStdString(napis));
+        blok=new CZrodloSinusoidalne();
         kolejny=new CBlok(posX,posY,0,1);
-        kolejny->setTitle(napis);
-        kolejny->setWartoscDisp(wartosc);
-        kolejny->setID(ileBlokow);
-        czlony.push_back(blok);
+
     }
+    blok->setWartoscCzlon(blok,wartosc);
+    treeItem->setText(1,QString::fromStdString(napis));
+    kolejny->setTitle(napis);
+    kolejny->setWartoscDisp(wartosc);
+    kolejny->setID(ileBlokow);
+    czlony.push_back(blok);
     bloki.push_back(kolejny);
     scene->addItem(kolejny);
     kolejny->show();
@@ -303,7 +222,7 @@ void MainWindow::on_dodajPolaczenie_2_clicked()
     int idCzlonu=ui->idWejsciaEdycja->text().toInt();
     int idWejscia=ui->nrWejsciaEdycja->text().toInt();
     std::string s=ui->typWejscia->currentText().toStdString();
-    czlony.at(idCzlonu)->setTypPolaczenia(idWejscia,s);
+    czlony.at(idCzlonu-1)->setTypPolaczenia(idWejscia,s);
 }
 
 void MainWindow::on_dodajPolaczenie_3_clicked()
@@ -311,5 +230,5 @@ void MainWindow::on_dodajPolaczenie_3_clicked()
     //EDYTUJ TYP WYJSCIA
     int idCzlonu=ui->idWyjsciaEdycja->text().toInt();
     std::string s=ui->typWyjscia->currentText().toStdString();
-    czlony.at(idCzlonu)->setTypWyjscia(s);
+    czlony.at(idCzlonu-1)->setTypWyjscia(s);
 }
