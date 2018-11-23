@@ -64,13 +64,13 @@ int main(int argc, char *argv[])
 
 
     CCzlonOpozniajacy *czlonO=new CCzlonOpozniajacy(2);
-    cout<<"ty stara kurwo niemyta"<<endl;
+    cout<<""<<endl;
     CMux *mux=new CMux(4);
     mux->dodajPolaczenie(czlon[0],mux,1);
     cout<<"MUX L : "<<mux->getIloscWejscCzlonu()<<endl;
     mux->dodajPolaczenie(czlon[2],mux,2);
     mux->dodajPolaczenie(czlonO,mux,3);
-    cout<<"kupsko"<<endl;
+    cout<<""<<endl;
     mux->dodajPolaczenie(pocz,mux,4,true,2);
     pocz->dodajPolaczenie(czlon[1],pocz,2);
     char *tab=new char[3];
